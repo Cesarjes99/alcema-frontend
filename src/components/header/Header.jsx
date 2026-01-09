@@ -1,19 +1,21 @@
+import logoGreen from "../../assets/logos/logo-green.png";
+
 function Header () {
   return (
     <header className="w-full bg-background border-b border-black/10">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-7 py-4 flex items-center justify-between">
 
         {/* Logo */}
         <div className="flex items-center gap-2">
           <img
-            src="/logo.svg"
+            src={logoGreen}
             alt="ALCEMA logo"
-            className="h-10"
+            className="h-18"
           />
         </div>
 
         {/* Navigation */}
-        <nav className="hidden md:flex items-center gap-8 font-medium">
+        <nav className="hidden md:flex items-center gap-15 font-medium">
           <a href="#" className="hover:text-accent transition">Inicio</a>
           <a href="#" className="hover:text-accent transition">Nosotros</a>
           <a href="#" className="hover:text-accent transition">Cultivos</a>
