@@ -1,12 +1,11 @@
 import './App.css'
+import Header from './components/Header/Header'
 
 function App() {
-
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <div className="min-h-screen bg-background text-text font-[var(--font-raleway)]">
+      <Header />
+    </div>
   )
 }
-
 export default App
