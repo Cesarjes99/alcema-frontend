@@ -13,7 +13,10 @@ function Footer() {
             <img
               src={logoSVG}
               alt="ALCEMA logo"
-              className="h-14 mb-6 brightness-0 invert"
+              className="h-14 mb-6"
+              style={{ 
+                filter: 'brightness(0) invert(97%) sepia(3%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(97%)',
+              }}
             />
             <p className="text-white/70 max-w-md">
               Agricultura orgánica responsable, comprometida con la calidad,
