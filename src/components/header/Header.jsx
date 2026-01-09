@@ -2,7 +2,7 @@ import logoGreen from '../../assets/logos/logo-green.png'
 
 function Header() {
   return (
-    <header className="w-full bg-background border-b border-black/10">
+    <header className="fixed top-0 left-0 right-0 w-full bg-background border-b border-black/10 z-50">
       <div className="max-w-7xl mx-auto px-7 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">

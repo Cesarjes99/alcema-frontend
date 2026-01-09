@@ -5,7 +5,7 @@ function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-text font-[var(--font-raleway)]">
       <Header />
-      <main>
+      <main className="pt-20">
         {/* Sección Inicio / Hero */}
         <section id="inicio" className="min-h-screen flex items-center justify-center">
           <div className="text-center">
