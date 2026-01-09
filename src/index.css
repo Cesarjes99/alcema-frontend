@@ -1,11 +1,15 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+html {
+  scroll-behavior: smooth;
+}
 
 @theme {
-  --color-primary: #176A4A;
-  --color-secondary: #4CAF50;
-  --color-accent: #7C4DFF;
-  --color-background: #F7F7F5;
-  --color-text: #2A2A2A;
+  --color-primary: #176a4a;
+  --color-secondary: #4caf50;
+  --color-accent: #7c4dff;
+  --color-background: #f7f7f5;
+  --color-text: #2a2a2a;
 
-  --font-raleway: "Raleway", sans-serif;
+  --font-raleway: 'Raleway', sans-serif;
 }
