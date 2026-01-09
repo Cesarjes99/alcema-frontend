@@ -39,7 +39,7 @@ function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contacto</h3>
             <ul className="space-y-3 text-white/70">
-              <li>📍 Sur de Sonora, México</li>
+              <li>📍 Huatabampo, Sonora, México</li>
               <li>📧 contacto@alcema.com</li>
               <li>📞 +52 000 000 0000</li>
             </ul>
