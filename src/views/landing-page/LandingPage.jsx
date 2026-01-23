@@ -16,6 +16,8 @@ import family2 from '../../assets/pictures/fake-family/fake-family2.avif'
 import iconoSuelo from '../../assets/icons/cuidado-del-suelo.png'
 import iconoAgua from '../../assets/icons/agua.png'
 import iconoCompromiso from '../../assets/icons/compromiso.png'
+import { crops } from '../../data/cropsData'
+import CropModal from '../../components/crop-modal/CropModal'
 
 function LandingPage() {
   const galleryImages = [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery7, gallery8, gallery9]
@@ -23,6 +25,17 @@ function LandingPage() {
   const [isPaused, setIsPaused] = useState(false)
   const carouselRef = useRef(null)
   const autoScrollIntervalRef = useRef(null)
+
+  // Estados para el carrusel de cultivos
+  const [selectedCropIndex, setSelectedCropIndex] = useState(0)
+  const [cropIsPaused, setCropIsPaused] = useState(false)
+  const cropAutoScrollIntervalRef = useRef(null)
+  const cropsContainerRef = useRef(null)
+  const cropsScrollContainerRef = useRef(null)
+
+  // Estado para el modal
+  const [selectedCrop, setSelectedCrop] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   // Auto-scroll suave hacia la izquierda
   useEffect(() => {
@@ -66,6 +79,71 @@ function LandingPage() {
     setCurrentIndex(index)
     setTimeout(() => setIsPaused(false), 5000) // Reanuda el auto-scroll después de 5 segundos
   }
+
+  // Auto-scroll para el carrusel de cultivos (cambia el seleccionado)
+  useEffect(() => {
+    if (!cropIsPaused) {
+      cropAutoScrollIntervalRef.current = setInterval(() => {
+        setSelectedCropIndex((prevIndex) => (prevIndex + 1) % crops.length)
+      }, 4000) // Cambia de cultivo seleccionado cada 4 segundos
+    }
+
+    return () => {
+      if (cropAutoScrollIntervalRef.current) {
+        clearInterval(cropAutoScrollIntervalRef.current)
+      }
+    }
+  }, [cropIsPaused, crops.length])
+
+  // Scroll al card seleccionado (solo horizontal)
+  useEffect(() => {
+    if (cropsContainerRef.current && cropsScrollContainerRef.current) {
+      const selectedCard = cropsContainerRef.current.children[selectedCropIndex]
+      if (selectedCard) {
+        const scrollContainer = cropsScrollContainerRef.current
+        const cardLeft = selectedCard.offsetLeft
+        const cardWidth = selectedCard.offsetWidth
+        const containerWidth = scrollContainer.offsetWidth
+        const scrollLeft = cardLeft - (containerWidth / 2) + (cardWidth / 2)
+        
+        scrollContainer.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        })
+      }
+    }
+  }, [selectedCropIndex])
+
+  const goToCropPrevious = () => {
+    setCropIsPaused(true)
+    setSelectedCropIndex((prevIndex) => (prevIndex - 1 + crops.length) % crops.length)
+    setTimeout(() => setCropIsPaused(false), 5000)
+  }
+
+  const goToCropNext = () => {
+    setCropIsPaused(true)
+    setSelectedCropIndex((prevIndex) => (prevIndex + 1) % crops.length)
+    setTimeout(() => setCropIsPaused(false), 5000)
+  }
+
+  const selectCrop = (index) => {
+    setCropIsPaused(true)
+    setSelectedCropIndex(index)
+    setTimeout(() => setCropIsPaused(false), 5000)
+  }
+
+  // Funciones para el modal
+  const openModal = (crop) => {
+    setSelectedCrop(crop)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedCrop(null)
+  }
+
+
   return (
     <div className="min-h-screen bg-background text-text font-[var(--font-raleway)]">
       <Header />
@@ -357,10 +435,173 @@ function LandingPage() {
         </section>
 
         {/* Sección Cultivos */}
-        <section id="cultivos" className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <h2 className="text-5xl font-bold text-text mb-4">Cultivos</h2>
-            <p className="text-lg text-text/70">Sección Cultivos</p>
+        <section id="cultivos" className="py-16 sm:py-20 bg-white/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl sm:text-5xl font-bold text-text mb-12 text-center">
+              Nuestros cultivos
+            </h2>
+
+            {/* Carrusel horizontal de cultivos */}
+            <div className="relative max-w-7xl mx-auto">
+              {/* Contenedor de cards - una sola línea horizontal */}
+              <div 
+                ref={cropsScrollContainerRef}
+                className="overflow-x-auto overflow-y-visible pb-15 -mx-4 px-4" 
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                <style>{`
+                  .crops-container::-webkit-scrollbar {
+                    display: none;
+                  }
+                `}</style>
+                <div ref={cropsContainerRef} className="flex gap-4 sm:gap-6 min-w-max crops-container">
+                  {crops.map((crop, index) => {
+                    const isSelected = index === selectedCropIndex
+                    return (
+                      <div
+                        key={crop.id}
+                        onClick={() => selectCrop(index)}
+                        className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col cursor-pointer transition-all duration-300 flex-shrink-0 ${
+                          isSelected
+                            ? 'scale-105 sm:scale-110 z-20 shadow-xl'
+                            : 'scale-100 z-10'
+                        }`}
+                        style={{ width: '250px', minWidth: '250px' }}
+                      >
+                      {/* Imagen del cultivo */}
+                      <div className="w-full h-[220px] sm:h-[250px] overflow-hidden">
+                        <img
+                          src={crop.image}
+                          alt={crop.name}
+                          className={`w-full h-full object-cover transition-all duration-300 ${
+                            isSelected ? 'brightness-100' : 'brightness-90'
+                          }`}
+                        />
+                      </div>
+                      {/* Contenido del card */}
+                      <div
+                        className={`p-3 sm:p-4 flex flex-col flex-grow transition-all duration-300 ${
+                          isSelected
+                            ? 'bg-white'
+                            : 'bg-gray-50'
+                        }`}
+                      >
+                        <h3
+                          className={`text-lg sm:text-xl font-bold mb-2 transition-colors duration-300 ${
+                            isSelected ? 'text-text' : 'text-text/60'
+                          }`}
+                        >
+                          {crop.name}
+                        </h3>
+                        <div className="flex items-center gap-2 mb-3">
+                          <svg
+                            className={`w-4 h-4 transition-colors duration-300 ${
+                              isSelected ? 'text-primary' : 'text-text/40'
+                            }`}
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                          </svg>
+                          <span
+                            className={`text-xs sm:text-sm transition-colors duration-300 ${
+                              isSelected ? 'text-text/50' : 'text-text/30'
+                            }`}
+                          >
+                            Producción sustentable
+                          </span>
+                        </div>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            openModal(crop)
+                          }}
+                          className={`mt-auto px-3 py-2 font-semibold rounded-lg transition-all duration-200 text-xs sm:text-sm flex items-center justify-center gap-2 ${
+                            isSelected
+                              ? 'bg-primary text-white hover:bg-primary/90'
+                              : 'bg-gray-200 text-text/50 hover:bg-gray-300'
+                          }`}
+                        >
+                          <svg
+                            className="w-3 h-3 sm:w-4 sm:h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                          Ver más
+                        </button>
+                      </div>
+                    </div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Flecha izquierda */}
+              <button
+                onClick={goToCropPrevious}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-8 bg-white/80 hover:bg-white text-text p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-30"
+                aria-label="Cultivo anterior"
+              >
+                <svg
+                  className="w-5 h-5 sm:w-6 sm:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              {/* Flecha derecha */}
+              <button
+                onClick={goToCropNext}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-8 bg-white/80 hover:bg-white text-text p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-30"
+                aria-label="Siguiente cultivo"
+              >
+                <svg
+                  className="w-5 h-5 sm:w-6 sm:h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+
+              {/* Indicadores de paginación */}
+              <div className="flex justify-center gap-2 mt-6">
+                {crops.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => selectCrop(index)}
+                    className={`h-2 sm:h-3 rounded-full transition-all duration-200 ${
+                      index === selectedCropIndex
+                        ? 'bg-text w-6 sm:w-8'
+                        : 'bg-text/30 w-2 sm:w-3 hover:bg-text/50'
+                    }`}
+                    aria-label={`Seleccionar cultivo ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -376,6 +617,13 @@ function LandingPage() {
         </section>
       </main>
       <Footer />
+
+      {/* Modal/Popup de cultivo */}
+      <CropModal
+        crop={selectedCrop}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
     </div>
   )
 }
