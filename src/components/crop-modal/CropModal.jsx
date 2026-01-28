@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 function CropModal({ crop, isOpen, onClose }) {
   // Cerrar modal con ESC
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = e => {
       if (e.key === 'Escape' && isOpen) {
         onClose()
       }
@@ -26,7 +26,7 @@ function CropModal({ crop, isOpen, onClose }) {
     >
       <div
         className="bg-white rounded-lg shadow-2xl max-w-2xl w-full relative flex flex-col"
-        onClick={(e) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
         style={{ maxHeight: '90vh' }}
       >
         {/* Botón de cerrar */}
@@ -35,12 +35,7 @@ function CropModal({ crop, isOpen, onClose }) {
           className="absolute top-3 right-3 bg-white/80 hover:bg-white text-text p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
           aria-label="Cerrar"
         >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -52,18 +47,12 @@ function CropModal({ crop, isOpen, onClose }) {
 
         {/* Imagen del cultivo */}
         <div className="w-full h-[250px] sm:h-[300px] overflow-hidden flex-shrink-0">
-          <img
-            src={crop.image}
-            alt={crop.name}
-            className="w-full h-full object-cover"
-          />
+          <img src={crop.image} alt={crop.name} className="w-full h-full object-cover" />
         </div>
 
         {/* Contenido del modal */}
         <div className="p-4 sm:p-6 flex flex-col flex-grow overflow-hidden">
-          <h3 className="text-2xl sm:text-3xl font-bold text-text mb-2 sm:mb-3">
-            {crop.name}
-          </h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-text mb-2 sm:mb-3">{crop.name}</h3>
           <p className="text-sm sm:text-base text-text/80 leading-relaxed mb-3 sm:mb-4">
             {crop.description}
           </p>
@@ -72,17 +61,6 @@ function CropModal({ crop, isOpen, onClose }) {
           <div className="space-y-2 mb-4 sm:mb-6">
             {crop.features.map((feature, index) => (
               <div key={index} className="flex items-center gap-2">
-                <svg
-                  className="w-4 h-4 text-primary flex-shrink-0"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
                 <span className="text-sm sm:text-base text-text">{feature}</span>
               </div>
             ))}
