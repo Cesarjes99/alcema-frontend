@@ -163,11 +163,11 @@ function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-text font-[var(--font-raleway)]">
       <Header />
-      <main>
+      <main className="pt-[calc(4.5rem+env(safe-area-inset-top))] sm:pt-[calc(5.5rem+env(safe-area-inset-top))]">
         {/* Sección Inicio / Hero */}
         <section
           id="inicio"
-          className="relative min-h-screen flex items-center justify-start px-4 sm:px-6 lg:px-8"
+          className="relative min-h-screen flex items-center justify-start px-4 sm:px-6 lg:px-8 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:scroll-mt-[calc(5.5rem+env(safe-area-inset-top))]"
           style={{
             backgroundImage: `url(${heroImage})`,
             backgroundSize: 'cover',
@@ -292,7 +292,10 @@ function LandingPage() {
         </section>
 
         {/* Sección Nosotros */}
-        <section id="nosotros" className="py-16 sm:py-20 bg-white/50">
+        <section
+          id="nosotros"
+          className="py-16 sm:py-20 bg-white/50 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:scroll-mt-[calc(5.5rem+env(safe-area-inset-top))]"
+        >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl sm:text-5xl font-bold text-text mb-16 text-center">Nosotros</h2>
 
@@ -500,7 +503,10 @@ function LandingPage() {
         </section>
 
         {/* Sección Cultivos */}
-        <section id="cultivos" className="py-16 sm:py-20 bg-white/50">
+        <section
+          id="cultivos"
+          className="py-16 sm:py-20 bg-white/50 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:scroll-mt-[calc(5.5rem+env(safe-area-inset-top))]"
+        >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl sm:text-5xl font-bold text-text mb-12 text-center">
               Nuestros cultivos
@@ -514,7 +520,7 @@ function LandingPage() {
         {/* Sección Contacto */}
         <section
           id="contacto"
-          className="relative py-16 sm:py-20 lg:py-24 min-h-screen flex items-center"
+          className="relative py-16 sm:py-20 lg:py-24 min-h-screen flex items-center scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:scroll-mt-[calc(5.5rem+env(safe-area-inset-top))]"
           style={{
             backgroundImage: `url(${contactImage})`,
             backgroundSize: 'cover',
