@@ -94,7 +94,7 @@ function CropsCarousel({ onOpenModal }) {
                 <div className="w-full h-[220px] sm:h-[250px] overflow-hidden">
                   <img
                     src={crop.image}
-                    alt={crop.name}
+                    alt={`Imagen de un ${crop.name} - ALCEMA`}
                     className={`w-full h-full object-cover transition-all duration-300 ${
                       isSelected ? 'brightness-100' : 'brightness-90'
                     }`}
