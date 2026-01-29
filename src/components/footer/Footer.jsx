@@ -5,9 +5,9 @@ function Footer() {
     <footer className="bg-[#1A1A1A] text-white">
       <div className="max-w-7xl mx-auto px-6 pt-15 pb-6">
         {/* Top */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="flex flex-col md:flex-row md:justify-between gap-8 md:gap-6 lg:gap-8">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="flex-1 md:flex-[2] min-w-0 md:pr-8">
             <img
               src={logoSVG}
               alt="ALCEMA logo"
@@ -24,7 +24,7 @@ function Footer() {
           </div>
 
           {/* Links */}
-          <div>
+          <div className="flex-1 md:flex-shrink-0 md:min-w-[140px]">
             <h3 className="text-lg font-semibold mb-4">Navegación</h3>
             <ul className="space-y-3 text-white/70">
               <li>
@@ -51,12 +51,12 @@ function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="flex-1 md:flex-shrink-0 md:min-w-[200px] mr-8">
             <h3 className="text-lg font-semibold mb-4">Contacto</h3>
             <ul className="space-y-3 text-white/70">
-              <li>📍 Huatabampo, Sonora, México</li>
-              <li>📧 contacto@alcema.com</li>
-              <li>📞 +52 000 000 0000</li>
+              <li className="whitespace-nowrap">📍 Huatabampo, Sonora, México</li>
+              <li className="whitespace-nowrap">📧 larrinagam@alcema.com</li>
+              <li className="whitespace-nowrap">📞 +52 (647) 482 0821</li>
             </ul>
           </div>
         </div>
