@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import heroImage from '../../assets/pictures/landing-page/hero-photo.jpeg'
@@ -110,6 +111,8 @@ function LandingPage() {
     correo: '',
     mensaje: '',
   })
+  const [isSending, setIsSending] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
 
   const handleInputChange = e => {
     const { name, value } = e.target
@@ -117,20 +120,44 @@ function LandingPage() {
       ...prev,
       [name]: value,
     }))
+    if (submitError) setSubmitError(null)
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    // Aquí puedes agregar la lógica para enviar el formulario
-    console.log('Formulario enviado:', formData)
-    // Resetear formulario
-    setFormData({
-      nombre: '',
-      empresa: '',
-      correo: '',
-      mensaje: '',
-    })
-    alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.')
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+
+    if (!publicKey || !serviceId || !templateId) {
+      setSubmitError('Configuración de correo incompleta. Revisa las variables de entorno.')
+      return
+    }
+
+    setIsSending(true)
+    setSubmitError(null)
+
+    try {
+      emailjs.init(publicKey)
+      await emailjs.send(serviceId, templateId, {
+        name: formData.nombre,
+        email: formData.correo,
+        enterprise: formData.empresa || '(no indicada)',
+        message: formData.mensaje,
+      })
+      setFormData({
+        nombre: '',
+        empresa: '',
+        correo: '',
+        mensaje: '',
+      })
+      alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.')
+    } catch (err) {
+      console.error('Error al enviar el formulario:', err)
+      setSubmitError('No se pudo enviar el mensaje. Comprueba tu conexión e inténtalo de nuevo.')
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
@@ -681,12 +708,19 @@ function LandingPage() {
                     />
                   </div>
 
+                  {submitError && (
+                    <p className="text-red-600 text-sm" role="alert">
+                      {submitError}
+                    </p>
+                  )}
+
                   {/* Botón de Envío */}
                   <button
                     type="submit"
-                    className="w-full bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors duration-200 text-base sm:text-lg"
+                    disabled={isSending}
+                    className="w-full bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors duration-200 text-base sm:text-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    Enviar mensaje
+                    {isSending ? 'Enviando...' : 'Enviar mensaje'}
                   </button>
                 </form>
               </div>
