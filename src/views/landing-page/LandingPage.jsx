@@ -504,11 +504,11 @@ function LandingPage() {
               {/* Columna Izquierda - Información de Contacto */}
               <div className="bg-background/95 backdrop-blur-sm rounded-lg p-6 sm:p-8 lg:p-10 shadow-xl">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text mb-4 sm:mb-6">
-                  Hablemos de tu próximo cultivo
+                  Contacta con nosotros
                 </h2>
                 <p className="text-base sm:text-lg text-text/70 mb-8 sm:mb-10 leading-relaxed">
-                  ¿Buscas un proveedor confiable de productos agrícolas? Escríbenos y con gusto te
-                  contactamos.
+                  Si tienes alguna pregunta o necesitas más información sobre nuestros productos o
+                  servicios, no dudes en contactarnos.
                 </p>
 
                 {/* Detalles de Contacto */}
@@ -562,10 +562,10 @@ function LandingPage() {
                     </div>
                     <div>
                       <a
-                        href="mailto:info@alcema.com"
+                        href="mailto:larrinagam@alcema.com"
                         className="text-base sm:text-lg font-semibold text-primary hover:text-primary/80 transition-colors duration-200"
                       >
-                        info@alcema.com
+                        larrinagam@alcema.com
                       </a>
                     </div>
                   </div>
@@ -589,10 +589,10 @@ function LandingPage() {
                     </div>
                     <div>
                       <a
-                        href="tel:+526474283028"
+                        href="tel:+526474820821"
                         className="text-base sm:text-lg font-semibold text-primary hover:text-primary/80 transition-colors duration-200"
                       >
-                        (647) 428 3028
+                        +52 (647) 482 0821
                       </a>
                     </div>
                   </div>

@@ -1,8 +1,8 @@
 import alfalfaImg from '../assets/pictures/fake-crops/alfalfa.webp'
 import cartamoImg from '../assets/pictures/fake-crops/cartamo.jpg'
 import celeryImg from '../assets/pictures/fake-crops/celery.jpg'
-import girasolImg from '../assets/pictures/fake-crops/girasol.jpg'
-import radicchioImg from '../assets/pictures/fake-crops/radicchio.webp'
+import girasolImg from '../assets/pictures/fake-crops/girasol.JPG'
+import radicchioImg from '../assets/pictures/fake-crops/radicchio.JPG'
 import trigoImg from '../assets/pictures/fake-crops/trigo.webp'
 import yellowSquashImg from '../assets/pictures/fake-crops/yellow-squash.jpg'
 import zucchiniImg from '../assets/pictures/fake-crops/zucchini.webp'
@@ -46,7 +46,7 @@ export const crops = [
   },
   {
     id: 4,
-    name: 'Calabaza Zucchinii',
+    name: 'Calabaza Zucchini',
     image: zucchiniImg,
     description:
       'Hortaliza fresca producida de manera orgánica, cuidando cada etapa del cultivo para ofrecer un producto sano, de excelente sabor y calidad.',

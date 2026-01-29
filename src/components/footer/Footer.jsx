@@ -55,8 +55,8 @@ function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contacto</h3>
             <ul className="space-y-3 text-white/70">
               <li className="whitespace-nowrap">📍 Huatabampo, Sonora, México</li>
-              <li className="whitespace-nowrap">📧 contacto@alcema.com</li>
-              <li className="whitespace-nowrap">📞 +52 000 000 0000</li>
+              <li className="whitespace-nowrap">📧 larrinagam@alcema.com</li>
+              <li className="whitespace-nowrap">📞 +52 (647) 482 0821</li>
             </ul>
           </div>
         </div>
