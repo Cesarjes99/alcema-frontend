@@ -18,13 +18,13 @@ function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 w-full bg-background border-b border-black/10 z-50">
+    <header className="fixed top-0 left-0 right-0 w-full bg-background border-b border-black/10 z-50 pt-[env(safe-area-inset-top)]">
       <div className="max-w-7xl mx-auto px-7 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <a 
-            href="#inicio" 
-            onClick={(e) => {
+          <a
+            href="#inicio"
+            onClick={e => {
               e.preventDefault()
               sessionStorage.setItem('scrollToTop', 'true')
               window.location.reload()
@@ -67,12 +67,7 @@ function Header() {
         >
           {isMenuOpen ? (
             // Icono X cuando está abierto
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -82,12 +77,7 @@ function Header() {
             </svg>
           ) : (
             // Icono hamburguesa cuando está cerrado
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -105,35 +95,35 @@ function Header() {
           <nav className="flex flex-col py-4">
             <a
               href="#inicio"
-              onClick={(e) => handleNavClick(e, 'inicio')}
+              onClick={e => handleNavClick(e, 'inicio')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
               Inicio
             </a>
             <a
               href="#nosotros"
-              onClick={(e) => handleNavClick(e, 'nosotros')}
+              onClick={e => handleNavClick(e, 'nosotros')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
               Nosotros
             </a>
             <a
               href="#cultivos"
-              onClick={(e) => handleNavClick(e, 'cultivos')}
+              onClick={e => handleNavClick(e, 'cultivos')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
               Cultivos
             </a>
             <a
               href="#contacto"
-              onClick={(e) => handleNavClick(e, 'contacto')}
+              onClick={e => handleNavClick(e, 'contacto')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
               Contacto
             </a>
             <a
               href="#contacto"
-              onClick={(e) => handleNavClick(e, 'contacto')}
+              onClick={e => handleNavClick(e, 'contacto')}
               className="mx-7 mt-2 inline-flex items-center justify-center rounded-md bg-primary px-5 py-2 text-white font-medium hover:bg-primary/90 transition"
             >
               Contáctanos
