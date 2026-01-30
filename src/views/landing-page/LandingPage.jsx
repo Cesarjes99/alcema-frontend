@@ -595,10 +595,10 @@ function LandingPage() {
                     </div>
                     <div>
                       <a
-                        href="mailto:larrinagam@alcema.com"
+                        href="mailto:agropecuaria@alcema.com"
                         className="text-base sm:text-lg font-semibold text-primary hover:text-primary/80 transition-colors duration-200"
                       >
-                        larrinagam@alcema.com
+                        agropecuaria@alcema.com
                       </a>
                     </div>
                   </div>
@@ -622,10 +622,10 @@ function LandingPage() {
                     </div>
                     <div>
                       <a
-                        href="tel:+526474820821"
+                        href="tel:+526474263388"
                         className="text-base sm:text-lg font-semibold text-primary hover:text-primary/80 transition-colors duration-200"
                       >
-                        +52 (647) 482 0821
+                        +52 (647) 4263388
                       </a>
                     </div>
                   </div>
