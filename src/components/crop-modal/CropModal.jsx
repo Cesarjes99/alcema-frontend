@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 function CropModal({ crop, isOpen, onClose }) {
-  // Cerrar modal con ESC
+  const { t } = useLanguage()
+
   useEffect(() => {
     const handleEscape = e => {
       if (e.key === 'Escape' && isOpen) {
@@ -13,6 +15,12 @@ function CropModal({ crop, isOpen, onClose }) {
   }, [isOpen, onClose])
 
   if (!isOpen || !crop) return null
+
+  const cropData = t(`cropDetails.${crop.translationKey}`)
+  const name = typeof cropData === 'object' && cropData?.name ? cropData.name : crop.translationKey
+  const description =
+    typeof cropData === 'object' && cropData?.description ? cropData.description : ''
+  const features = Array.isArray(cropData?.features) ? cropData.features : []
 
   const handleContactClick = () => {
     onClose()
@@ -29,11 +37,11 @@ function CropModal({ crop, isOpen, onClose }) {
         onClick={e => e.stopPropagation()}
         style={{ maxHeight: '90vh' }}
       >
-        {/* Botón de cerrar */}
+        {/* Close button */}
         <button
           onClick={onClose}
           className="absolute top-3 right-3 bg-white/80 hover:bg-white text-text p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
-          aria-label="Cerrar"
+          aria-label={t('cropModal.close')}
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -45,33 +53,33 @@ function CropModal({ crop, isOpen, onClose }) {
           </svg>
         </button>
 
-        {/* Imagen del cultivo */}
+        {/* Crop image */}
         <div className="w-full h-[250px] sm:h-[300px] overflow-hidden flex-shrink-0">
-          <img src={crop.image} alt={crop.name} className="w-full h-full object-cover" />
+          <img src={crop.image} alt={name} className="w-full h-full object-cover" />
         </div>
 
-        {/* Contenido del modal */}
+        {/* Modal content */}
         <div className="p-4 sm:p-6 flex flex-col flex-grow overflow-hidden">
-          <h3 className="text-2xl sm:text-3xl font-bold text-text mb-2 sm:mb-3">{crop.name}</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-text mb-2 sm:mb-3">{name}</h3>
           <p className="text-sm sm:text-base text-text/80 leading-relaxed mb-3 sm:mb-4">
-            {crop.description}
+            {description}
           </p>
 
-          {/* Lista de características */}
+          {/* Features list - emojis included in translation strings */}
           <div className="space-y-2 mb-4 sm:mb-6">
-            {crop.features.map((feature, index) => (
-              <div key={index} className="flex items-center gap-2">
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-start gap-2">
                 <span className="text-sm sm:text-base text-text">{feature}</span>
               </div>
             ))}
           </div>
 
-          {/* Botón Contáctanos */}
+          {/* Contact button */}
           <button
             onClick={handleContactClick}
             className="w-full px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors duration-200 text-base sm:text-lg mt-auto"
           >
-            Contáctanos
+            {t('cropModal.contactUs')}
           </button>
         </div>
       </div>

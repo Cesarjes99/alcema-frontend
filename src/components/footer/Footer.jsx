@@ -1,6 +1,9 @@
 import logoSVG from '../../assets/logos/logo-svg.svg'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="bg-[#1A1A1A] text-white">
       <div className="max-w-7xl mx-auto px-6 pt-15 pb-6">
@@ -17,34 +20,31 @@ function Footer() {
                   'brightness(0) invert(97%) sepia(3%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(97%)',
               }}
             />
-            <p className="text-white/70 max-w-md">
-              Agricultura orgánica responsable, comprometida con la calidad, la sustentabilidad y el
-              cuidado de la tierra.
-            </p>
+            <p className="text-white/70 max-w-md">{t('footer.tagline')}</p>
           </div>
 
           {/* Links */}
           <div className="flex-1 md:flex-shrink-0 md:min-w-[140px]">
-            <h3 className="text-lg font-semibold mb-4">Navegación</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.navigation')}</h3>
             <ul className="space-y-3 text-white/70">
               <li>
                 <a href="#inicio" className="hover:text-accent transition">
-                  Inicio
+                  {t('nav.home')}
                 </a>
               </li>
               <li>
                 <a href="#nosotros" className="hover:text-accent transition">
-                  Nosotros
+                  {t('nav.about')}
                 </a>
               </li>
               <li>
                 <a href="#cultivos" className="hover:text-accent transition">
-                  Cultivos
+                  {t('nav.crops')}
                 </a>
               </li>
               <li>
                 <a href="#contacto" className="hover:text-accent transition">
-                  Contacto
+                  {t('nav.contact')}
                 </a>
               </li>
             </ul>
@@ -52,9 +52,9 @@ function Footer() {
 
           {/* Contact */}
           <div className="flex-1 md:flex-shrink-0 md:min-w-[200px] mr-8">
-            <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-3 text-white/70">
-              <li className="whitespace-nowrap">📍 Huatabampo, Sonora, México</li>
+              <li className="whitespace-nowrap">📍 {t('footer.location')}</li>
               <li className="whitespace-nowrap">📧 agropecuaria@alcema.com</li>
               <li className="whitespace-nowrap">📞 +52 (647) 4263388</li>
             </ul>
@@ -63,8 +63,8 @@ function Footer() {
 
         {/* Divider */}
         <div className="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/50">
-          <p>© {new Date().getFullYear()} ALCEMA. Todos los derechos reservados.</p>
-          <p className="mt-4 md:mt-0">Agricultura orgánica sostenible</p>
+          <p>© {new Date().getFullYear()} ALCEMA. {t('footer.rights')}</p>
+          <p className="mt-4 md:mt-0">{t('footer.sustainable')}</p>
         </div>
       </div>
     </footer>

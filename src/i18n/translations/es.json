@@ -1,0 +1,188 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "crops": "Cultivos",
+    "contact": "Contacto",
+    "contactUs": "Contáctanos"
+  },
+  "hero": {
+    "title": "Cultivando calidad desde la tierra",
+    "subtitle": "Somos una empresa agrícola familiar dedicada al cultivo responsable, combinando experiencia, trabajo de campo y visión a futuro.",
+    "contactUs": "Contáctanos",
+    "viewCrops": "Ver cultivos"
+  },
+  "gallery": {
+    "title": "Nuestro trabajo en el campo",
+    "previousImage": "Imagen anterior",
+    "nextImage": "Siguiente imagen",
+    "goToImage": "Ir a imagen",
+    "imageAlt": "Galería"
+  },
+  "about": {
+    "title": "Nosotros",
+    "whoWeAre": {
+      "heading": "Quiénes somos",
+      "paragraph1": "ALCEMA es una agrícola familiar con más de 100 años de historia, dedicada exclusivamente a la producción de hortalizas orgánicas bajo un modelo de agricultura regenerativa y sustentable.",
+      "paragraph2": "Somos una empresa de tercera generación, profundamente arraigada al Valle del Mayo, en Huatabampo, Sonora, donde combinamos tradición, innovación y respeto por la tierra.",
+      "paragraph3": "Nuestro compromiso es producir alimentos de alta calidad mientras cuidamos el suelo, el agua y a las personas que forman parte de nuestra operación.",
+      "weWorkWith": "Trabajamos con:",
+      "organicCrops": "Cultivos 100% orgánicos",
+      "dripIrrigation": "Riego por goteo y sistemas presurizados",
+      "sustainablePractices": "Prácticas agrícolas sustentables y regenerativas",
+      "familyImageAlt": "Familia ALCEMA"
+    },
+    "ourHistory": {
+      "heading": "Nuestra historia",
+      "paragraph1": "Nuestra historia comienza en 1920, cuando Don Eugenio Larrínaga, emigrante vasco, descubrió las tierras fértiles del Bajo Río Mayo. Visionario y pionero, logró exportar hortalizas —principalmente tomate— a Estados Unidos durante la Segunda Guerra Mundial, posicionándose como uno de los agricultores más innovadores del valle.",
+      "paragraph2": "A lo largo de los años, la familia enfrentó grandes retos, como las sequías y la falta de infraestructura hídrica, lo que impulsó la exploración de nuevos valles y formas de producción. Con la construcción de la Presa Adolfo Ruiz Cortines en 1959, la región encontró estabilidad y crecimiento agrícola.",
+      "paragraph3": "En 1980, tras el reparto agrario de 1976, Don Cesar Larrínaga decidió fraccionar las tierras entre sus hijos, fundando formalmente ALCEMA, nombre que surge de la unión familiar y que permanece hasta hoy como símbolo de resiliencia, trabajo y continuidad generacional.",
+      "imageAlt": "Don César Larrinaga"
+    },
+    "vision": {
+      "heading": "Visión y sustentabilidad",
+      "paragraph1": "Nuestra visión es clara: producir de manera responsable hoy, para garantizar un mañana fértil.",
+      "paragraph2": "Conscientes de que la agricultura tiene límites, transformamos por completo nuestra operación hacia un modelo sustentable y regenerativo, enfocado en:",
+      "soilConservation": "Conservación del suelo",
+      "waterEfficiency": "Uso eficiente del agua",
+      "reduceInputs": "Reducción de insumos externos",
+      "ecosystemBalance": "Equilibrio del ecosistema agrícola",
+      "weImplement": "Implementamos:",
+      "implement1": "Riego por goteo, aspersión y agricultura de precisión",
+      "implement2": "Laboreo mínimo para proteger la vida del suelo",
+      "implement3": "Composta certificada y minerales naturales",
+      "implement4": "Rotación de cultivos (3 a 5 ciclos) y abonos verdes",
+      "implement5": "Control biológico mediante hábitat y flores benéficas",
+      "paragraph3": "Cuidamos no solo la tierra, sino también a nuestro entorno y colaboradores, promoviendo la seguridad, la capacitación y el reciclaje.",
+      "paragraph4": "Hoy, ALCEMA avanza con nuevos proyectos enfocados en reducir el consumo energético y la dependencia del petróleo, honrando el espíritu emprendedor de Don Eugenio y el legado de Don Cesar, mientras sembramos el futuro para las siguientes generaciones.",
+      "soilCare": "Cuidado del suelo",
+      "waterCare": "Uso eficiente del agua",
+      "peopleCare": "Compromiso con las personas",
+      "videoTitle": "Video de ALCEMA"
+    }
+  },
+  "crops": {
+    "title": "Nuestros cultivos",
+    "viewMore": "Ver más",
+    "previousCrop": "Cultivo anterior",
+    "nextCrop": "Siguiente cultivo",
+    "selectCrop": "Seleccionar cultivo",
+    "sustainableProduction": "Producción sustentable",
+    "cropImageAlt": "Imagen de un"
+  },
+  "cropDetails": {
+    "alfalfa": {
+      "name": "Alfalfa",
+      "description": "Forraje fundamental para la ganadería regional, cultivado de manera orgánica y destinado principalmente a la venta local para ganaderos de la zona, fortaleciendo la economía regional.",
+      "features": [
+        "🐄 Ideal para alimentación de ganado por su alto valor nutritivo.",
+        "🌾 Cultivo perenne que mejora la salud del suelo.",
+        "🤝 Producción local orientada al mercado ganadero regional."
+      ]
+    },
+    "celery": {
+      "name": "Apio",
+      "description": "Cultivo fresco y aromático, sembrado bajo un manejo orgánico que prioriza la salud del suelo y la calidad del producto final. Está destinado a exportación al mercado de Estados Unidos, cumpliendo con altos estándares de producción e inocuidad.",
+      "features": [
+        "🥬 Tallos crujientes y de sabor natural.",
+        "🌱 Producción responsable y regenerativa.",
+        "📦 Calidad para exportación"
+      ]
+    },
+    "radicchio": {
+      "name": "Radicchio",
+      "description": "Hortaliza de hoja con carácter y sabor distintivo. En ALCEMA lo cultivamos con técnicas regenerativas que respetan el suelo y el entorno.",
+      "features": [
+        "🍃 Sabor intenso y coloración natural.",
+        "🍽️ Alto valor gastronómico.",
+        "🌍 Producción orgánica con prácticas sustentables."
+      ]
+    },
+    "zucchini": {
+      "name": "Calabaza Zucchini",
+      "description": "Hortaliza fresca producida de manera orgánica, cuidando cada etapa del cultivo para ofrecer un producto sano, de excelente sabor y calidad.",
+      "features": [
+        "🥒 Producción continua durante la temporada.",
+        "🥗 Alto valor nutricional y frescura.",
+        "🚫 Cultivada sin agroquímicos sintéticos."
+      ]
+    },
+    "yellowSquash": {
+      "name": "Calabaza Amarilla (Yellow Squash)",
+      "description": "Hortaliza de temporada, reconocida por su sabor suave y textura tierna. En ALCEMA la cultivamos de forma orgánica, bajo prácticas sustentables que cuidan el suelo y el entorno.",
+      "features": [
+        "⭐ Fruto tierno y de alta calidad comercial.",
+        "🌞 Crecimiento rápido y eficiente en campo.",
+        "🌱 Producción orgánica con manejo regenerativo."
+      ]
+    },
+    "wheat": {
+      "name": "Trigo",
+      "description": "El trigo es uno de nuestros cultivos tradicionales, sembrado bajo prácticas regenerativas que conservan la fertilidad del suelo y garantizan un grano limpio y natural.",
+      "features": [
+        "🌾 Grano orgánico de alta calidad.",
+        "🪴 Mejora la estructura del suelo dentro de la rotación agrícola.",
+        "♻️ Producción responsable con bajo impacto ambiental."
+      ]
+    },
+    "sunflower": {
+      "name": "Girasol",
+      "description": "Cultivo versátil y de gran valor, reconocido por su aceite y por su aporte ecológico. Nuestro girasol se cultiva de forma sustentable, respetando los ciclos naturales del campo.",
+      "features": [
+        "🌻 Semilla rica en aceite vegetal.",
+        "🐝 Atrae polinizadores y promueve la biodiversidad.",
+        "☀️ Adaptable a diferentes condiciones de suelo y clima."
+      ]
+    },
+    "safflower": {
+      "name": "Cártamo",
+      "description": "Cultivo oleaginoso adaptado a climas secos y suelos del sur de Sonora. En ALCEMA lo producimos de forma orgánica, priorizando la salud del suelo y su aprovechamiento integral para alimentos y usos industriales.",
+      "features": [
+        "🏵️ Alto contenido de aceite vegetal de calidad.",
+        "💧 Resistente a la sequía y eficiente en el uso del agua.",
+        "🌱 Favorece la rotación de cultivos y la regeneración del suelo."
+      ]
+    }
+  },
+  "contact": {
+    "title": "Contacta con nosotros",
+    "intro": "Si tienes alguna pregunta o necesitas más información sobre nuestros productos o servicios, no dudes en contactarnos.",
+    "location": "Huatabampo, Sonora",
+    "email": "agropecuaria@alcema.com",
+    "phone": "+52 (647) 4263388",
+    "form": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "company": "Empresa",
+      "companyOptional": "(opcional)",
+      "companyPlaceholder": "Empresa (opcional)",
+      "email": "Correo",
+      "emailPlaceholder": "tu@correo.com",
+      "message": "Mensaje",
+      "messagePlaceholder": "Mensaje",
+      "send": "Enviar mensaje",
+      "sending": "Enviando..."
+    },
+    "errors": {
+      "emailConfig": "Configuración de correo incompleta. Revisa las variables de entorno.",
+      "sendFailed": "No se pudo enviar el mensaje. Comprueba tu conexión e inténtalo de nuevo."
+    },
+    "success": "¡Mensaje enviado! Nos pondremos en contacto contigo pronto."
+  },
+  "footer": {
+    "tagline": "Agricultura orgánica responsable, comprometida con la calidad, la sustentabilidad y el cuidado de la tierra.",
+    "navigation": "Navegación",
+    "contact": "Contacto",
+    "location": "Huatabampo, Sonora, México",
+    "rights": "Todos los derechos reservados.",
+    "sustainable": "Agricultura orgánica sostenible"
+  },
+  "cropModal": {
+    "close": "Cerrar",
+    "contactUs": "Contáctanos"
+  },
+  "accessibility": {
+    "toggleMenu": "Abrir menú",
+    "ariaCloseMenu": "Cerrar menú"
+  }
+}
