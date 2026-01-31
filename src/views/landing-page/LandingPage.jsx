@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import emailjs from '@emailjs/browser'
+import { useLanguage } from '../../i18n/LanguageContext'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import heroImage from '../../assets/pictures/landing-page/hero-photo.webp'
@@ -22,6 +23,7 @@ import CropModal from '../../components/crop-modal/CropModal'
 import CropsCarousel from '../../components/crops-carousel/CropsCarousel'
 
 function LandingPage() {
+  const { t } = useLanguage()
   const galleryImages = [
     gallery1,
     gallery2,
@@ -130,7 +132,7 @@ function LandingPage() {
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
 
     if (!publicKey || !serviceId || !templateId) {
-      setSubmitError('Configuración de correo incompleta. Revisa las variables de entorno.')
+      setSubmitError(t('contact.errors.emailConfig'))
       return
     }
 
@@ -151,10 +153,10 @@ function LandingPage() {
         correo: '',
         mensaje: '',
       })
-      alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.')
+      alert(t('contact.success'))
     } catch (err) {
       console.error('Error al enviar el formulario:', err)
-      setSubmitError('No se pudo enviar el mensaje. Comprueba tu conexión e inténtalo de nuevo.')
+      setSubmitError(t('contact.errors.sendFailed'))
     } finally {
       setIsSending(false)
     }
@@ -181,11 +183,10 @@ function LandingPage() {
           {/* Contenido */}
           <div className="relative z-10 max-w-3xl text-white py-20 mx-20 sm:py-32">
             <h1 className="text-4xl max-w-2xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-              Cultivando calidad desde la tierra
+              {t('hero.title')}
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl mb-8 text-white/95 leading-relaxed">
-              Somos una empresa agrícola familiar dedicada al cultivo responsable, combinando
-              experiencia, trabajo de campo y visión a futuro.
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
@@ -194,7 +195,7 @@ function LandingPage() {
                 }}
                 className="px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-[#5d2fa3] transition-colors duration-200 text-lg"
               >
-                Contáctanos
+                {t('hero.contactUs')}
               </button>
               <button
                 onClick={() => {
@@ -202,7 +203,7 @@ function LandingPage() {
                 }}
                 className="px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white/10 transition-colors duration-200 text-lg"
               >
-                Ver cultivos
+                {t('hero.viewCrops')}
               </button>
             </div>
           </div>
@@ -212,7 +213,7 @@ function LandingPage() {
         <section className="py-16 sm:py-20 bg-white/50">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl sm:text-5xl font-bold text-text mb-12 text-center">
-              Nuestro trabajo en el campo
+              {t('gallery.title')}
             </h2>
 
             {/* Carrusel */}
@@ -233,7 +234,7 @@ function LandingPage() {
                       <div className="rounded-lg overflow-hidden shadow-lg">
                         <img
                           src={image}
-                          alt={`Galería ${index + 1}`}
+                          alt={`${t('gallery.imageAlt')} ${index + 1}`}
                           className="w-full h-[400px] sm:h-[500px] object-cover"
                         />
                       </div>
@@ -246,7 +247,7 @@ function LandingPage() {
               <button
                 onClick={goToPrevious}
                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-text p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
-                aria-label="Imagen anterior"
+                aria-label={t('gallery.previousImage')}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -262,7 +263,7 @@ function LandingPage() {
               <button
                 onClick={goToNext}
                 className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-text p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
-                aria-label="Siguiente imagen"
+                aria-label={t('gallery.nextImage')}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -283,7 +284,7 @@ function LandingPage() {
                     className={`h-3 rounded-full transition-all duration-200 ${
                       index === currentIndex ? 'bg-text w-8' : 'bg-text/30 w-3 hover:bg-text/50'
                     }`}
-                    aria-label={`Ir a imagen ${index + 1}`}
+                    aria-label={`${t('gallery.goToImage')} ${index + 1}`}
                   />
                 ))}
               </div>
@@ -297,7 +298,9 @@ function LandingPage() {
           className="py-16 sm:py-20 bg-white/50 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:scroll-mt-[calc(5.5rem+env(safe-area-inset-top))]"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl sm:text-5xl font-bold text-text mb-16 text-center">Nosotros</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-text mb-16 text-center">
+              {t('about.title')}
+            </h2>
 
             {/* Contenedor card para todo el contenido */}
             <div className="bg-white rounded-lg shadow-xl p-6 sm:p-8 lg:p-12">
@@ -306,37 +309,34 @@ function LandingPage() {
                 <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                   {/* Texto a la izquierda */}
                   <div className="flex-1">
-                    <h3 className="text-3xl sm:text-4xl font-bold text-text mb-6">Quiénes somos</h3>
+                    <h3 className="text-3xl sm:text-4xl font-bold text-text mb-6">
+                      {t('about.whoWeAre.heading')}
+                    </h3>
                     <p className="text-lg sm:text-xl text-text/80 leading-relaxed mb-4">
-                      ALCEMA es una agrícola familiar con más de 100 años de historia, dedicada
-                      exclusivamente a la producción de hortalizas orgánicas bajo un modelo de
-                      agricultura regenerativa y sustentable.
+                      {t('about.whoWeAre.paragraph1')}
                     </p>
                     <p className="text-lg sm:text-xl text-text/80 leading-relaxed mb-4">
-                      Somos una empresa de tercera generación, profundamente arraigada al Valle del
-                      Mayo, en Huatabampo, Sonora, donde combinamos tradición, innovación y respeto
-                      por la tierra.
+                      {t('about.whoWeAre.paragraph2')}
                     </p>
                     <p className="text-lg sm:text-xl text-text/80 leading-relaxed mb-4">
-                      Nuestro compromiso es producir alimentos de alta calidad mientras cuidamos el
-                      suelo, el agua y a las personas que forman parte de nuestra operación.
+                      {t('about.whoWeAre.paragraph3')}
                     </p>
                     <div className="mt-6">
                       <p className="text-lg sm:text-xl font-semibold text-text mb-3">
-                        Trabajamos con:
+                        {t('about.whoWeAre.weWorkWith')}
                       </p>
                       <ul className="space-y-2 text-lg sm:text-xl text-text/80">
                         <li className="flex items-start gap-2">
                           <span className="text-xl">🌱</span>
-                          <span>Cultivos 100% orgánicos</span>
+                          <span>{t('about.whoWeAre.organicCrops')}</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-xl">💧</span>
-                          <span>Riego por goteo y sistemas presurizados</span>
+                          <span>{t('about.whoWeAre.dripIrrigation')}</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-xl">♻️</span>
-                          <span>Prácticas agrícolas sustentables y regenerativas</span>
+                          <span>{t('about.whoWeAre.sustainablePractices')}</span>
                         </li>
                       </ul>
                     </div>
@@ -346,7 +346,7 @@ function LandingPage() {
                     <div className="rounded-lg overflow-hidden shadow-lg">
                       <img
                         src={family1}
-                        alt="Familia ALCEMA"
+                        alt={t('about.whoWeAre.familyImageAlt')}
                         className="w-full h-[400px] sm:h-[500px] object-cover"
                       />
                     </div>
@@ -360,26 +360,16 @@ function LandingPage() {
                   {/* Texto a la derecha */}
                   <div className="flex-1">
                     <h3 className="text-3xl sm:text-4xl font-bold text-text mb-6">
-                      Nuestra historia
+                      {t('about.ourHistory.heading')}
                     </h3>
                     <p className="text-lg sm:text-xl text-text/80 leading-relaxed mb-4">
-                      Nuestra historia comienza en 1920, cuando Don Eugenio Larrínaga, emigrante
-                      vasco, descubrió las tierras fértiles del Bajo Río Mayo. Visionario y pionero,
-                      logró exportar hortalizas —principalmente tomate— a Estados Unidos durante la
-                      Segunda Guerra Mundial, posicionándose como uno de los agricultores más
-                      innovadores del valle.
+                      {t('about.ourHistory.paragraph1')}
                     </p>
                     <p className="text-lg sm:text-xl text-text/80 leading-relaxed mb-4">
-                      A lo largo de los años, la familia enfrentó grandes retos, como las sequías y
-                      la falta de infraestructura hídrica, lo que impulsó la exploración de nuevos
-                      valles y formas de producción. Con la construcción de la Presa Adolfo Ruiz
-                      Cortines en 1959, la región encontró estabilidad y crecimiento agrícola.
+                      {t('about.ourHistory.paragraph2')}
                     </p>
                     <p className="text-lg sm:text-xl text-text/80 leading-relaxed">
-                      En 1980, tras el reparto agrario de 1976, Don Cesar Larrínaga decidió
-                      fraccionar las tierras entre sus hijos, fundando formalmente ALCEMA, nombre
-                      que surge de la unión familiar y que permanece hasta hoy como símbolo de
-                      resiliencia, trabajo y continuidad generacional.
+                      {t('about.ourHistory.paragraph3')}
                     </p>
                   </div>
                   {/* Imagen a la izquierda */}
@@ -387,7 +377,7 @@ function LandingPage() {
                     <div className="rounded-lg overflow-hidden shadow-lg">
                       <img
                         src={family2}
-                        alt="Don César Larrinaga"
+                        alt={t('about.ourHistory.imageAlt')}
                         className="w-full h-[400px] sm:h-[500px] object-cover"
                       />
                     </div>
@@ -401,41 +391,35 @@ function LandingPage() {
                   {/* Texto a la izquierda */}
                   <div className="flex-1 lg:flex-[1.2] w-full">
                     <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-text mb-4 sm:mb-6">
-                      Visión y sustentabilidad
+                      {t('about.vision.heading')}
                     </h3>
                     <p className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed mb-3 sm:mb-4">
-                      Nuestra visión es clara: producir de manera responsable hoy, para garantizar
-                      un mañana fértil.
+                      {t('about.vision.paragraph1')}
                     </p>
                     <p className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed mb-3 sm:mb-4">
-                      Conscientes de que la agricultura tiene límites, transformamos por completo
-                      nuestra operación hacia un modelo sustentable y regenerativo, enfocado en:
+                      {t('about.vision.paragraph2')}
                     </p>
                     <ul className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed mb-3 sm:mb-4 space-y-2 list-disc list-inside">
-                      <li>Conservación del suelo</li>
-                      <li>Uso eficiente del agua</li>
-                      <li>Reducción de insumos externos</li>
-                      <li>Equilibrio del ecosistema agrícola</li>
+                      <li>{t('about.vision.soilConservation')}</li>
+                      <li>{t('about.vision.waterEfficiency')}</li>
+                      <li>{t('about.vision.reduceInputs')}</li>
+                      <li>{t('about.vision.ecosystemBalance')}</li>
                     </ul>
                     <p className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed mb-3 sm:mb-4 font-semibold">
-                      Implementamos:
+                      {t('about.vision.weImplement')}
                     </p>
                     <ul className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed mb-3 sm:mb-4 space-y-2">
-                      <li>• Riego por goteo, aspersión y agricultura de precisión</li>
-                      <li>• Laboreo mínimo para proteger la vida del suelo</li>
-                      <li>• Composta certificada y minerales naturales</li>
-                      <li>• Rotación de cultivos (3 a 5 ciclos) y abonos verdes</li>
-                      <li>• Control biológico mediante hábitat y flores benéficas</li>
+                      <li>• {t('about.vision.implement1')}</li>
+                      <li>• {t('about.vision.implement2')}</li>
+                      <li>• {t('about.vision.implement3')}</li>
+                      <li>• {t('about.vision.implement4')}</li>
+                      <li>• {t('about.vision.implement5')}</li>
                     </ul>
                     <p className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed mb-3 sm:mb-4">
-                      Cuidamos no solo la tierra, sino también a nuestro entorno y colaboradores,
-                      promoviendo la seguridad, la capacitación y el reciclaje.
+                      {t('about.vision.paragraph3')}
                     </p>
                     <p className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed">
-                      Hoy, ALCEMA avanza con nuevos proyectos enfocados en reducir el consumo
-                      energético y la dependencia del petróleo, honrando el espíritu emprendedor de
-                      Don Eugenio y el legado de Don Cesar, mientras sembramos el futuro para las
-                      siguientes generaciones.
+                      {t('about.vision.paragraph4')}
                     </p>
                   </div>
                   {/* Video a la derecha */}
@@ -462,24 +446,24 @@ function LandingPage() {
                         <div className="flex-shrink-0">
                           <img
                             src={iconoSuelo}
-                            alt="Cuidado del suelo"
+                            alt={t('about.vision.soilCare')}
                             className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 object-contain"
                           />
                         </div>
                         <span className="text-xs sm:text-xs md:text-sm lg:text-base font-semibold text-text sm:whitespace-nowrap">
-                          Cuidado del suelo
+                          {t('about.vision.soilCare')}
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-3">
                         <div className="flex-shrink-0">
                           <img
                             src={iconoAgua}
-                            alt="Uso eficiente del agua"
+                            alt={t('about.vision.waterCare')}
                             className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-12 lg:h-12 object-contain"
                           />
                         </div>
                         <span className="text-xs sm:text-xs md:text-sm lg:text-base font-semibold text-text sm:whitespace-nowrap">
-                          Uso eficiente del agua
+                          {t('about.vision.waterCare')}
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-3">
@@ -491,7 +475,7 @@ function LandingPage() {
                           />
                         </div>
                         <span className="text-xs sm:text-xs md:text-sm lg:text-base font-semibold text-text sm:whitespace-nowrap">
-                          Compromiso con las personas
+                          {t('about.vision.peopleCare')}
                         </span>
                       </div>
                     </div>
@@ -509,7 +493,7 @@ function LandingPage() {
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-4xl sm:text-5xl font-bold text-text mb-12 text-center">
-              Nuestros cultivos
+              {t('crops.title')}
             </h2>
 
             {/* Carrusel horizontal de cultivos */}
@@ -537,11 +521,10 @@ function LandingPage() {
               {/* Columna Izquierda - Información de Contacto */}
               <div className="bg-background/95 backdrop-blur-sm rounded-lg p-6 sm:p-8 lg:p-10 shadow-xl">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text mb-4 sm:mb-6">
-                  Contacta con nosotros
+                  {t('contact.title')}
                 </h2>
                 <p className="text-base sm:text-lg text-text/70 mb-8 sm:mb-10 leading-relaxed">
-                  Si tienes alguna pregunta o necesitas más información sobre nuestros productos o
-                  servicios, no dudes en contactarnos.
+                  {t('contact.intro')}
                 </p>
 
                 {/* Detalles de Contacto */}
@@ -571,7 +554,7 @@ function LandingPage() {
                     </div>
                     <div>
                       <p className="text-base sm:text-lg font-semibold text-primary">
-                        Huatabampo, Sonora
+                        {t('contact.location')}
                       </p>
                     </div>
                   </div>
@@ -641,7 +624,7 @@ function LandingPage() {
                       htmlFor="nombre"
                       className="block text-base sm:text-lg font-semibold text-text mb-2"
                     >
-                      Nombre
+                      {t('contact.form.name')}
                     </label>
                     <input
                       type="text"
@@ -651,7 +634,7 @@ function LandingPage() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-text"
-                      placeholder="Tu nombre"
+                      placeholder={t('contact.form.namePlaceholder')}
                     />
                   </div>
 
@@ -661,7 +644,10 @@ function LandingPage() {
                       htmlFor="empresa"
                       className="block text-base sm:text-lg font-semibold text-text mb-2"
                     >
-                      Empresa <span className="text-text/50 font-normal">(opcional)</span>
+                      {t('contact.form.company')}{' '}
+                      <span className="text-text/50 font-normal">
+                        {t('contact.form.companyOptional')}
+                      </span>
                     </label>
                     <input
                       type="text"
@@ -670,7 +656,7 @@ function LandingPage() {
                       value={formData.empresa}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-text"
-                      placeholder="Empresa (opcional)"
+                      placeholder={t('contact.form.companyPlaceholder')}
                     />
                   </div>
 
@@ -680,7 +666,7 @@ function LandingPage() {
                       htmlFor="correo"
                       className="block text-base sm:text-lg font-semibold text-text mb-2"
                     >
-                      Correo
+                      {t('contact.form.email')}
                     </label>
                     <input
                       type="email"
@@ -690,7 +676,7 @@ function LandingPage() {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-text"
-                      placeholder="tu@correo.com"
+                      placeholder={t('contact.form.emailPlaceholder')}
                     />
                   </div>
 
@@ -700,7 +686,7 @@ function LandingPage() {
                       htmlFor="mensaje"
                       className="block text-base sm:text-lg font-semibold text-text mb-2"
                     >
-                      Mensaje
+                      {t('contact.form.message')}
                     </label>
                     <textarea
                       id="mensaje"
@@ -710,7 +696,7 @@ function LandingPage() {
                       required
                       rows={5}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 text-text resize-none"
-                      placeholder="Mensaje"
+                      placeholder={t('contact.form.messagePlaceholder')}
                     />
                   </div>
 
@@ -726,7 +712,7 @@ function LandingPage() {
                     disabled={isSending}
                     className="w-full bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary/90 transition-colors duration-200 text-base sm:text-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {isSending ? 'Enviando...' : 'Enviar mensaje'}
+                    {isSending ? t('contact.form.sending') : t('contact.form.send')}
                   </button>
                 </form>
               </div>

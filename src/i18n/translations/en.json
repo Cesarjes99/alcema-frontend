@@ -1,0 +1,188 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "crops": "Crops",
+    "contact": "Contact",
+    "contactUs": "Contact Us"
+  },
+  "hero": {
+    "title": "Growing quality from the land",
+    "subtitle": "We are a family agricultural company dedicated to responsible farming, combining experience, fieldwork, and a vision for the future.",
+    "contactUs": "Contact Us",
+    "viewCrops": "View Crops"
+  },
+  "gallery": {
+    "title": "Our work in the field",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "goToImage": "Go to image",
+    "imageAlt": "Gallery"
+  },
+  "about": {
+    "title": "About Us",
+    "whoWeAre": {
+      "heading": "Who we are",
+      "paragraph1": "ALCEMA is a family-owned agricultural company with over 100 years of history, dedicated exclusively to organic vegetable production under a regenerative and sustainable agriculture model.",
+      "paragraph2": "We are a third-generation company, deeply rooted in the Mayo Valley in Huatabampo, Sonora, where we combine tradition, innovation, and respect for the land.",
+      "paragraph3": "Our commitment is to produce high-quality food while caring for the soil, water, and the people who are part of our operation.",
+      "weWorkWith": "We work with:",
+      "organicCrops": "100% organic crops",
+      "dripIrrigation": "Drip irrigation and pressurized systems",
+      "sustainablePractices": "Sustainable and regenerative agricultural practices",
+      "familyImageAlt": "ALCEMA family"
+    },
+    "ourHistory": {
+      "heading": "Our history",
+      "paragraph1": "Our story begins in 1920, when Don Eugenio Larrínaga, a Basque immigrant, discovered the fertile lands of the Lower Mayo River. A visionary and pioneer, he succeeded in exporting vegetables—mainly tomatoes—to the United States during World War II, establishing himself as one of the most innovative farmers in the valley.",
+      "paragraph2": "Over the years, the family faced great challenges, such as droughts and lack of water infrastructure, which drove the exploration of new valleys and production methods. With the construction of the Adolfo Ruiz Cortines Dam in 1959, the region found stability and agricultural growth.",
+      "paragraph3": "In 1980, following the 1976 land reform, Don Cesar Larrínaga decided to divide the lands among his children, formally founding ALCEMA, a name that emerges from the family union and remains to this day as a symbol of resilience, hard work, and generational continuity.",
+      "imageAlt": "Don César Larrinaga"
+    },
+    "vision": {
+      "heading": "Vision and sustainability",
+      "paragraph1": "Our vision is clear: produce responsibly today, to ensure a fertile tomorrow.",
+      "paragraph2": "Aware that agriculture has limits, we have completely transformed our operation toward a sustainable and regenerative model, focused on:",
+      "soilConservation": "Soil conservation",
+      "waterEfficiency": "Efficient water use",
+      "reduceInputs": "Reduction of external inputs",
+      "ecosystemBalance": "Agricultural ecosystem balance",
+      "weImplement": "We implement:",
+      "implement1": "Drip irrigation, sprinklers, and precision agriculture",
+      "implement2": "Minimum tillage to protect soil life",
+      "implement3": "Certified compost and natural minerals",
+      "implement4": "Crop rotation (3 to 5 cycles) and green manures",
+      "implement5": "Biological control through habitat and beneficial flowers",
+      "paragraph3": "We care not only for the land, but also for our surroundings and collaborators, promoting safety, training, and recycling.",
+      "paragraph4": "Today, ALCEMA is advancing with new projects focused on reducing energy consumption and oil dependency, honoring the entrepreneurial spirit of Don Eugenio and the legacy of Don Cesar, while sowing the future for the next generations.",
+      "soilCare": "Soil care",
+      "waterCare": "Efficient water use",
+      "peopleCare": "Commitment to people",
+      "videoTitle": "ALCEMA video"
+    }
+  },
+  "crops": {
+    "title": "Our crops",
+    "viewMore": "View more",
+    "previousCrop": "Previous crop",
+    "nextCrop": "Next crop",
+    "selectCrop": "Select crop",
+    "sustainableProduction": "Sustainable production",
+    "cropImageAlt": "Image of"
+  },
+  "cropDetails": {
+    "alfalfa": {
+      "name": "Alfalfa",
+      "description": "Essential forage for regional livestock, organically grown and primarily intended for local sale to ranchers in the area, strengthening the regional economy.",
+      "features": [
+        "🐄 Ideal for livestock feed due to its high nutritional value.",
+        "🌾 Perennial crop that improves soil health.",
+        "🤝 Local production oriented to the regional livestock market."
+      ]
+    },
+    "celery": {
+      "name": "Celery",
+      "description": "Fresh and aromatic crop, grown under organic management that prioritizes soil health and final product quality. It is destined for export to the United States market, meeting high production and food safety standards.",
+      "features": [
+        "🥬 Crispy stems with natural flavor.",
+        "🌱 Responsible and regenerative production.",
+        "📦 Export-quality"
+      ]
+    },
+    "radicchio": {
+      "name": "Radicchio",
+      "description": "Leafy vegetable with distinctive character and flavor. At ALCEMA we grow it with regenerative techniques that respect the soil and environment.",
+      "features": [
+        "🍃 Intense flavor and natural coloring.",
+        "🍽️ High gastronomic value.",
+        "🌍 Organic production with sustainable practices."
+      ]
+    },
+    "zucchini": {
+      "name": "Zucchini Squash",
+      "description": "Fresh vegetable produced organically, caring for each stage of the crop to offer a healthy product with excellent flavor and quality.",
+      "features": [
+        "🥒 Continuous production during the season.",
+        "🥗 High nutritional value and freshness.",
+        "🚫 Grown without synthetic agrochemicals."
+      ]
+    },
+    "yellowSquash": {
+      "name": "Yellow Squash",
+      "description": "Seasonal vegetable recognized for its mild flavor and tender texture. At ALCEMA we grow it organically, under sustainable practices that care for the soil and environment.",
+      "features": [
+        "⭐ Tender fruit with high commercial quality.",
+        "🌞 Fast and efficient growth in the field.",
+        "🌱 Organic production with regenerative management."
+      ]
+    },
+    "wheat": {
+      "name": "Wheat",
+      "description": "Wheat is one of our traditional crops, grown under regenerative practices that preserve soil fertility and ensure a clean, natural grain.",
+      "features": [
+        "🌾 High-quality organic grain.",
+        "🪴 Improves soil structure within the agricultural rotation.",
+        "♻️ Responsible production with low environmental impact."
+      ]
+    },
+    "sunflower": {
+      "name": "Sunflower",
+      "description": "Versatile and high-value crop, recognized for its oil and ecological contribution. Our sunflower is grown sustainably, respecting the natural cycles of the field.",
+      "features": [
+        "🌻 Seed rich in vegetable oil.",
+        "🐝 Attracts pollinators and promotes biodiversity.",
+        "☀️ Adaptable to different soil and climate conditions."
+      ]
+    },
+    "safflower": {
+      "name": "Safflower",
+      "description": "Oilseed crop adapted to dry climates and soils of southern Sonora. At ALCEMA we produce it organically, prioritizing soil health and its integral use for food and industrial purposes.",
+      "features": [
+        "🏵️ High content of quality vegetable oil.",
+        "💧 Drought-resistant and water-efficient.",
+        "🌱 Favors crop rotation and soil regeneration."
+      ]
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "intro": "If you have any questions or need more information about our products or services, feel free to contact us.",
+    "location": "Huatabampo, Sonora",
+    "email": "agropecuaria@alcema.com",
+    "phone": "+52 (647) 4263388",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "company": "Company",
+      "companyOptional": "(optional)",
+      "companyPlaceholder": "Company (optional)",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Message",
+      "send": "Send message",
+      "sending": "Sending..."
+    },
+    "errors": {
+      "emailConfig": "Incomplete email configuration. Check environment variables.",
+      "sendFailed": "Could not send message. Check your connection and try again."
+    },
+    "success": "Message sent! We will get in touch with you soon."
+  },
+  "footer": {
+    "tagline": "Responsible organic agriculture, committed to quality, sustainability, and care for the land.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "location": "Huatabampo, Sonora, Mexico",
+    "rights": "All rights reserved.",
+    "sustainable": "Sustainable organic agriculture"
+  },
+  "cropModal": {
+    "close": "Close",
+    "contactUs": "Contact Us"
+  },
+  "accessibility": {
+    "toggleMenu": "Toggle menu",
+    "ariaCloseMenu": "Close menu"
+  }
+}

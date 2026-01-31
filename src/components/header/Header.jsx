@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import logoGreen from '../../assets/logos/logo-green.png'
+import LanguageSlider from './LanguageSlider'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault()
@@ -38,55 +41,59 @@ function Header() {
         {/* Navigation Desktop */}
         <nav className="hidden md:flex items-center gap-15 font-medium">
           <a href="#inicio" className="hover:text-accent transition">
-            Inicio
+            {t('nav.home')}
           </a>
           <a href="#nosotros" className="hover:text-accent transition">
-            Nosotros
+            {t('nav.about')}
           </a>
           <a href="#cultivos" className="hover:text-accent transition">
-            Cultivos
+            {t('nav.crops')}
           </a>
           <a href="#contacto" className="hover:text-accent transition">
-            Contacto
+            {t('nav.contact')}
           </a>
         </nav>
 
-        {/* CTA Desktop */}
-        <a
-          href="#contacto"
-          className="hidden md:inline-flex items-center rounded-md bg-primary px-5 py-2 text-white font-medium hover:bg-primary/90 transition"
-        >
-          Contáctanos
-        </a>
+        {/* Language slider + CTA Desktop */}
+        <div className="hidden md:flex items-center gap-4">
+          <LanguageSlider />
+          <a
+            href="#contacto"
+            className="inline-flex items-center rounded-md bg-primary px-5 py-2 text-white font-medium hover:bg-primary/90 transition"
+          >
+            {t('nav.contactUs')}
+          </a>
+        </div>
 
-        {/* Hamburger Menu Button - Mobile */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden p-2 text-text hover:text-accent transition-colors"
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? (
-            // Icono X cuando está abierto
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            // Icono hamburguesa cuando está cerrado
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </button>
+        {/* Mobile: Language slider + Hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSlider />
+          <button
+            onClick={toggleMenu}
+            className="p-2 text-text hover:text-accent transition-colors"
+            aria-label={t('accessibility.toggleMenu')}
+          >
+            {isMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -98,35 +105,35 @@ function Header() {
               onClick={e => handleNavClick(e, 'inicio')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
-              Inicio
+              {t('nav.home')}
             </a>
             <a
               href="#nosotros"
               onClick={e => handleNavClick(e, 'nosotros')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
-              Nosotros
+              {t('nav.about')}
             </a>
             <a
               href="#cultivos"
               onClick={e => handleNavClick(e, 'cultivos')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
-              Cultivos
+              {t('nav.crops')}
             </a>
             <a
               href="#contacto"
               onClick={e => handleNavClick(e, 'contacto')}
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
-              Contacto
+              {t('nav.contact')}
             </a>
             <a
               href="#contacto"
               onClick={e => handleNavClick(e, 'contacto')}
               className="mx-7 mt-2 inline-flex items-center justify-center rounded-md bg-primary px-5 py-2 text-white font-medium hover:bg-primary/90 transition"
             >
-              Contáctanos
+              {t('nav.contactUs')}
             </a>
           </nav>
         </div>

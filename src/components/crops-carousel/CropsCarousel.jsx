@@ -1,20 +1,20 @@
 import { useState, useEffect, useRef } from 'react'
 import { crops } from '../../data/cropsData'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 function CropsCarousel({ onOpenModal }) {
-  // Estados para el carrusel de cultivos
+  const { t } = useLanguage()
   const [selectedCropIndex, setSelectedCropIndex] = useState(0)
   const [cropIsPaused, setCropIsPaused] = useState(false)
   const cropAutoScrollIntervalRef = useRef(null)
   const cropsContainerRef = useRef(null)
   const cropsScrollContainerRef = useRef(null)
 
-  // Auto-scroll para el carrusel de cultivos (cambia el seleccionado)
   useEffect(() => {
     if (!cropIsPaused) {
       cropAutoScrollIntervalRef.current = setInterval(() => {
         setSelectedCropIndex(prevIndex => (prevIndex + 1) % crops.length)
-      }, 4000) // Cambia de cultivo seleccionado cada 4 segundos
+      }, 4000)
     }
 
     return () => {
@@ -24,7 +24,6 @@ function CropsCarousel({ onOpenModal }) {
     }
   }, [cropIsPaused, crops.length])
 
-  // Scroll al card seleccionado (solo horizontal)
   useEffect(() => {
     if (cropsContainerRef.current && cropsScrollContainerRef.current) {
       const selectedCard = cropsContainerRef.current.children[selectedCropIndex]
@@ -61,9 +60,19 @@ function CropsCarousel({ onOpenModal }) {
     setTimeout(() => setCropIsPaused(false), 5000)
   }
 
+  const getCropName = crop => {
+    const cropData = t(`cropDetails.${crop.translationKey}`)
+    return typeof cropData === 'object' && cropData?.name ? cropData.name : crop.translationKey
+  }
+
+  const getCropFirstFeature = crop => {
+    const cropData = t(`cropDetails.${crop.translationKey}`)
+    const features = Array.isArray(cropData?.features) ? cropData.features : []
+    return features[0] || t('crops.sustainableProduction')
+  }
+
   return (
     <div className="relative max-w-7xl mx-auto">
-      {/* Contenedor de cards - una sola línea horizontal */}
       <div
         ref={cropsScrollContainerRef}
         className="overflow-x-auto overflow-y-visible pb-15 -mx-4 px-4"
@@ -77,10 +86,9 @@ function CropsCarousel({ onOpenModal }) {
         <div ref={cropsContainerRef} className="flex gap-4 sm:gap-6 min-w-max crops-container">
           {crops.map((crop, index) => {
             const isSelected = index === selectedCropIndex
-            const firstFeature =
-              crop.features && crop.features.length > 0
-                ? crop.features[0]
-                : 'Producción sustentable'
+            const cropName = getCropName(crop)
+            const firstFeature = getCropFirstFeature(crop)
+
             return (
               <div
                 key={crop.id}
@@ -90,17 +98,15 @@ function CropsCarousel({ onOpenModal }) {
                 }`}
                 style={{ width: '250px', minWidth: '250px' }}
               >
-                {/* Imagen del cultivo */}
                 <div className="w-full h-[220px] sm:h-[250px] overflow-hidden">
                   <img
                     src={crop.image}
-                    alt={`Imagen de un ${crop.name} - ALCEMA`}
+                    alt={`${t('crops.cropImageAlt')} ${cropName} - ALCEMA`}
                     className={`w-full h-full object-cover transition-all duration-300 ${
                       isSelected ? 'brightness-100' : 'brightness-90'
                     }`}
                   />
                 </div>
-                {/* Contenido del card */}
                 <div
                   className={`p-3 sm:p-4 flex flex-col flex-grow transition-all duration-300 ${
                     isSelected ? 'bg-white' : 'bg-gray-50'
@@ -111,7 +117,7 @@ function CropsCarousel({ onOpenModal }) {
                       isSelected ? 'text-text' : 'text-text/60'
                     }`}
                   >
-                    {crop.name}
+                    {cropName}
                   </h3>
                   <div className="flex items-center gap-2 mb-3">
                     <span
@@ -146,7 +152,7 @@ function CropsCarousel({ onOpenModal }) {
                         d="M9 5l7 7-7 7"
                       />
                     </svg>
-                    Ver más
+                    {t('crops.viewMore')}
                   </button>
                 </div>
               </div>
@@ -155,11 +161,10 @@ function CropsCarousel({ onOpenModal }) {
         </div>
       </div>
 
-      {/* Flecha izquierda */}
       <button
         onClick={goToCropPrevious}
         className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-8 bg-white/80 hover:bg-white text-text p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-30"
-        aria-label="Cultivo anterior"
+        aria-label={t('crops.previousCrop')}
       >
         <svg
           className="w-5 h-5 sm:w-6 sm:h-6"
@@ -171,11 +176,10 @@ function CropsCarousel({ onOpenModal }) {
         </svg>
       </button>
 
-      {/* Flecha derecha */}
       <button
         onClick={goToCropNext}
         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-8 bg-white/80 hover:bg-white text-text p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-30"
-        aria-label="Siguiente cultivo"
+        aria-label={t('crops.nextCrop')}
       >
         <svg
           className="w-5 h-5 sm:w-6 sm:h-6"
@@ -187,7 +191,6 @@ function CropsCarousel({ onOpenModal }) {
         </svg>
       </button>
 
-      {/* Indicadores de paginación */}
       <div className="flex justify-center gap-2 mt-6">
         {crops.map((_, index) => (
           <button
@@ -198,7 +201,7 @@ function CropsCarousel({ onOpenModal }) {
                 ? 'bg-text w-6 sm:w-8'
                 : 'bg-text/30 w-2 sm:w-3 hover:bg-text/50'
             }`}
-            aria-label={`Seleccionar cultivo ${index + 1}`}
+            aria-label={`${t('crops.selectCrop')} ${index + 1}`}
           />
         ))}
       </div>
