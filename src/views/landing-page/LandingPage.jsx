@@ -578,10 +578,10 @@ function LandingPage() {
                     </div>
                     <div>
                       <a
-                        href="mailto:agropecuaria@alcema.com"
+                        href="mailto:info@alcema.com"
                         className="text-base sm:text-lg font-semibold text-primary hover:text-primary/80 transition-colors duration-200"
                       >
-                        agropecuaria@alcema.com
+                        info@alcema.com
                       </a>
                     </div>
                   </div>

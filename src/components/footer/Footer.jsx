@@ -55,7 +55,7 @@ function Footer() {
             <h3 className="text-lg font-semibold mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-3 text-white/70">
               <li className="whitespace-nowrap">📍 {t('footer.location')}</li>
-              <li className="whitespace-nowrap">📧 agropecuaria@alcema.com</li>
+              <li className="whitespace-nowrap">📧 info@alcema.com</li>
               <li className="whitespace-nowrap">📞 +52 (647) 4263388</li>
             </ul>
           </div>
@@ -63,7 +63,9 @@ function Footer() {
 
         {/* Divider */}
         <div className="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between text-sm text-white/50">
-          <p>© {new Date().getFullYear()} ALCEMA. {t('footer.rights')}</p>
+          <p>
+            © {new Date().getFullYear()} ALCEMA. {t('footer.rights')}
+          </p>
           <p className="mt-4 md:mt-0">{t('footer.sustainable')}</p>
         </div>
       </div>
