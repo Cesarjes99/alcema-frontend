@@ -9,7 +9,7 @@ function LanguageSlider() {
     <button
       type="button"
       onClick={toggleLanguage}
-      className="group relative flex items-center rounded-full overflow-hidden"
+      className="group relative flex items-center rounded-full overflow-hidden cursor-pointer"
       aria-label={language === 'es' ? 'Switch to English' : 'Cambiar a español'}
     >
       {/* Liquid glass container - frosted effect on light background */}
@@ -43,12 +43,7 @@ function LanguageSlider() {
             language === 'en' ? 'text-primary' : 'text-text/50 group-hover:text-text/70'
           }`}
         >
-          <img
-            src={usaIcon}
-            alt=""
-            className="w-5 h-5 object-contain flex-shrink-0"
-            aria-hidden
-          />
+          <img src={usaIcon} alt="" className="w-5 h-5 object-contain flex-shrink-0" aria-hidden />
           <span>EN</span>
         </span>
       </div>

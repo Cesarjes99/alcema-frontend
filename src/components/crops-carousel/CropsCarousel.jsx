@@ -5,6 +5,7 @@ import { useLanguage } from '../../i18n/LanguageContext'
 function CropsCarousel({ onOpenModal }) {
   const { t } = useLanguage()
   const [selectedCropIndex, setSelectedCropIndex] = useState(0)
+  const [hoveredCropIndex, setHoveredCropIndex] = useState(null)
   const [cropIsPaused, setCropIsPaused] = useState(false)
   const cropAutoScrollIntervalRef = useRef(null)
   const cropsContainerRef = useRef(null)
@@ -86,6 +87,8 @@ function CropsCarousel({ onOpenModal }) {
         <div ref={cropsContainerRef} className="flex gap-4 sm:gap-6 min-w-max crops-container">
           {crops.map((crop, index) => {
             const isSelected = index === selectedCropIndex
+            const isHovered = index === hoveredCropIndex
+            const hasSelectedStyles = hoveredCropIndex !== null ? isHovered : isSelected
             const cropName = getCropName(crop)
             const firstFeature = getCropFirstFeature(crop)
 
@@ -93,8 +96,10 @@ function CropsCarousel({ onOpenModal }) {
               <div
                 key={crop.id}
                 onClick={() => selectCrop(index)}
+                onMouseEnter={() => setHoveredCropIndex(index)}
+                onMouseLeave={() => setHoveredCropIndex(null)}
                 className={`bg-white rounded-lg shadow-lg overflow-hidden flex flex-col cursor-pointer transition-all duration-300 flex-shrink-0 ${
-                  isSelected ? 'scale-105 sm:scale-110 z-20 shadow-xl' : 'scale-100 z-10'
+                  hasSelectedStyles ? 'scale-105 sm:scale-110 z-20 shadow-xl' : 'scale-100 z-10'
                 }`}
                 style={{ width: '250px', minWidth: '250px' }}
               >
@@ -103,18 +108,18 @@ function CropsCarousel({ onOpenModal }) {
                     src={crop.image}
                     alt={`${t('crops.cropImageAlt')} ${cropName} - ALCEMA`}
                     className={`w-full h-full object-cover transition-all duration-300 ${
-                      isSelected ? 'brightness-100' : 'brightness-90'
+                      hasSelectedStyles ? 'brightness-100' : 'brightness-90'
                     }`}
                   />
                 </div>
                 <div
                   className={`p-3 sm:p-4 flex flex-col flex-grow transition-all duration-300 ${
-                    isSelected ? 'bg-white' : 'bg-gray-50'
+                    hasSelectedStyles ? 'bg-white' : 'bg-gray-50'
                   }`}
                 >
                   <h3
                     className={`text-lg sm:text-xl font-bold mb-2 transition-colors duration-300 ${
-                      isSelected ? 'text-text' : 'text-text/60'
+                      hasSelectedStyles ? 'text-text' : 'text-text/60'
                     }`}
                   >
                     {cropName}
@@ -122,7 +127,7 @@ function CropsCarousel({ onOpenModal }) {
                   <div className="flex items-center gap-2 mb-3">
                     <span
                       className={`text-xs sm:text-sm transition-colors duration-300 ${
-                        isSelected ? 'text-text/50' : 'text-text/30'
+                        hasSelectedStyles ? 'text-text/50' : 'text-text/30'
                       }`}
                     >
                       {firstFeature}
@@ -134,7 +139,7 @@ function CropsCarousel({ onOpenModal }) {
                       onOpenModal(crop)
                     }}
                     className={`mt-auto px-3 py-2 font-semibold rounded-lg transition-all duration-200 text-xs sm:text-sm flex items-center justify-center gap-2 ${
-                      isSelected
+                      hasSelectedStyles
                         ? 'bg-primary text-white hover:bg-primary/90'
                         : 'bg-gray-200 text-text/50 hover:bg-gray-300'
                     }`}
