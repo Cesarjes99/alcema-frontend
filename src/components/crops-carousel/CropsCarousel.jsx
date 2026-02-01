@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { crops } from '../../data/cropsData'
 import { useLanguage } from '../../i18n/LanguageContext'
 
@@ -10,6 +10,30 @@ function CropsCarousel({ onOpenModal }) {
   const cropAutoScrollIntervalRef = useRef(null)
   const cropsContainerRef = useRef(null)
   const cropsScrollContainerRef = useRef(null)
+  const isProgrammaticScrollRef = useRef(false)
+
+  const updateSelectionFromScroll = useCallback(() => {
+    const container = cropsScrollContainerRef.current
+    const containerEl = cropsContainerRef.current
+    if (!container || !containerEl || !window.matchMedia('(max-width: 639px)').matches) return
+    if (isProgrammaticScrollRef.current) return
+
+    const containerCenter = container.scrollLeft + container.offsetWidth / 2
+    let closestIndex = 0
+    let closestDistance = Infinity
+
+    for (let i = 0; i < containerEl.children.length; i++) {
+      const card = containerEl.children[i]
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2
+      const distance = Math.abs(cardCenter - containerCenter)
+      if (distance < closestDistance) {
+        closestDistance = distance
+        closestIndex = i
+      }
+    }
+
+    setSelectedCropIndex(closestIndex)
+  }, [])
 
   useEffect(() => {
     if (!cropIsPaused) {
@@ -26,6 +50,17 @@ function CropsCarousel({ onOpenModal }) {
   }, [cropIsPaused, crops.length])
 
   useEffect(() => {
+    const scrollContainer = cropsScrollContainerRef.current
+    if (!scrollContainer) return
+
+    const handleScroll = () => {
+      requestAnimationFrame(updateSelectionFromScroll)
+    }
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true })
+    return () => scrollContainer.removeEventListener('scroll', handleScroll)
+  }, [updateSelectionFromScroll])
+
+  useEffect(() => {
     if (cropsContainerRef.current && cropsScrollContainerRef.current) {
       const selectedCard = cropsContainerRef.current.children[selectedCropIndex]
       if (selectedCard) {
@@ -35,10 +70,18 @@ function CropsCarousel({ onOpenModal }) {
         const containerWidth = scrollContainer.offsetWidth
         const scrollLeft = cardLeft - containerWidth / 2 + cardWidth / 2
 
+        if (window.matchMedia('(max-width: 639px)').matches) {
+          isProgrammaticScrollRef.current = true
+        }
         scrollContainer.scrollTo({
           left: scrollLeft,
           behavior: 'smooth',
         })
+        if (window.matchMedia('(max-width: 639px)').matches) {
+          setTimeout(() => {
+            isProgrammaticScrollRef.current = false
+          }, 600)
+        }
       }
     }
   }, [selectedCropIndex])
