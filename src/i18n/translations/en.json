@@ -64,8 +64,22 @@
   },
   "certifications": {
     "title": "Certifications",
-    "subtitle": "Soon you will be able to learn more in detail about our certifications and quality seals.",
-    "description": "We are working on gathering and organizing all information related to our organic and sustainability certifications. This section will be the place where we clearly and transparently show the standards we meet to guarantee responsible, high-quality products."
+    "subtitle": "These certifications support our commitment to quality, sustainability, and people’s well-being.",
+    "description": "Learn about the standards we meet to ensure responsible practices in the field and reliable products for our customers.",
+    "items": {
+      "ccof": {
+        "title": "CCOF - Organic Certification",
+        "description": "Organic certification that verifies our processes comply with strict international standards for soil management, biodiversity protection, and the responsible use of inputs, ensuring production free from prohibited substances."
+      },
+      "primusgfs": {
+        "title": "PrimusGFS - Food Safety",
+        "description": "International standard recognized by the Global Food Safety Initiative (GFSI) that certifies our good agricultural practices, hygienic handling, and food safety systems, ensuring safe products from the field to the customer."
+      },
+      "fairTrade": {
+        "title": "Fair Trade - Fair Trade Certification",
+        "description": "Certification that promotes fair working conditions, respect for labor rights, and community development through responsible and transparent commercial practices."
+      }
+    }
   },
   "crops": {
     "title": "Our crops",
