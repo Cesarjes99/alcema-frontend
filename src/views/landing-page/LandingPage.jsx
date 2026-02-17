@@ -486,6 +486,26 @@ function LandingPage() {
           </div>
         </section>
 
+        {/* Sección Certificaciones (placeholder) */}
+        <section
+          id="certificaciones"
+          className="py-16 sm:py-20 bg-white/50 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:scroll-mt-[calc(5.5rem+env(safe-area-inset-top))]"
+        >
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl sm:text-5xl font-bold text-text mb-6 text-center">
+              {t('certifications.title')}
+            </h2>
+            <p className="text-lg sm:text-xl text-text/80 mb-10 text-center max-w-3xl mx-auto">
+              {t('certifications.subtitle')}
+            </p>
+            <div className="bg-white rounded-lg shadow-xl p-6 sm:p-8 lg:p-12 max-w-4xl mx-auto text-center">
+              <p className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed">
+                {t('certifications.description')}
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Sección Cultivos */}
         <section
           id="cultivos"

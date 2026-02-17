@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "certifications": "Certifications",
     "crops": "Crops",
     "contact": "Contact",
     "contactUs": "Contact Us"
@@ -60,6 +61,11 @@
       "peopleCare": "Commitment to people",
       "videoTitle": "ALCEMA video"
     }
+  },
+  "certifications": {
+    "title": "Certifications",
+    "subtitle": "Soon you will be able to learn more in detail about our certifications and quality seals.",
+    "description": "We are working on gathering and organizing all information related to our organic and sustainability certifications. This section will be the place where we clearly and transparently show the standards we meet to guarantee responsible, high-quality products."
   },
   "crops": {
     "title": "Our crops",

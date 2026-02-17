@@ -2,6 +2,7 @@
   "nav": {
     "home": "Inicio",
     "about": "Nosotros",
+    "certifications": "Certificaciones",
     "crops": "Cultivos",
     "contact": "Contacto",
     "contactUs": "Contáctanos"
@@ -60,6 +61,11 @@
       "peopleCare": "Compromiso con las personas",
       "videoTitle": "Video de ALCEMA"
     }
+  },
+  "certifications": {
+    "title": "Certificaciones",
+    "subtitle": "Muy pronto podrás conocer a detalle nuestras certificaciones y sellos de calidad.",
+    "description": "Estamos trabajando en la recopilación y organización de toda la información relacionada con nuestras certificaciones orgánicas y de sustentabilidad. Esta sección será el espacio donde mostraremos, de forma clara y transparente, los estándares que cumplimos para garantizar productos responsables y de alta calidad."
   },
   "crops": {
     "title": "Nuestros cultivos",
