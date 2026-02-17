@@ -2,6 +2,7 @@
   "nav": {
     "home": "Inicio",
     "about": "Nosotros",
+    "certifications": "Certificaciones",
     "crops": "Cultivos",
     "contact": "Contacto",
     "contactUs": "Contáctanos"
@@ -59,6 +60,25 @@
       "waterCare": "Uso eficiente del agua",
       "peopleCare": "Compromiso con las personas",
       "videoTitle": "Video de ALCEMA"
+    }
+  },
+  "certifications": {
+    "title": "Certificaciones",
+    "subtitle": "Estas certificaciones respaldan nuestro compromiso con la calidad, la sustentabilidad y el bienestar de las personas.",
+    "description": "Conoce algunos de los estándares que cumplimos para garantizar prácticas responsables en el campo y productos confiables para nuestros clientes.",
+    "items": {
+      "ccof": {
+        "title": "CCOF - Certificación orgánica",
+        "description": "Certificación orgánica que avala que nuestros procesos cumplen con estrictos lineamientos internacionales para el manejo del suelo, la biodiversidad y el uso responsable de insumos, garantizando una producción libre de sustancias prohibidas."
+      },
+      "primusgfs": {
+        "title": "PrimusGFS - Inocuidad alimentaria",
+        "description": "Estándar internacional reconocido por la Iniciativa Global de Seguridad Alimentaria (GFSI) que certifica nuestras buenas prácticas agrícolas, manejo higiénico y sistemas de inocuidad, garantizando alimentos seguros desde el campo hasta el cliente."
+      },
+      "fairTrade": {
+        "title": "Fair Trade - Comercio justo",
+        "description": "Certificación que promueve condiciones de trabajo justas, respeto a los derechos laborales y desarrollo comunitario mediante prácticas comerciales responsables y transparentes."
+      }
     }
   },
   "crops": {

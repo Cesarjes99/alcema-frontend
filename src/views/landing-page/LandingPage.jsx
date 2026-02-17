@@ -15,12 +15,16 @@ import gallery8 from '../../assets/pictures/landing-page/gallery-8.webp'
 import gallery9 from '../../assets/pictures/landing-page/gallery-9.webp'
 import family1 from '../../assets/pictures/landing-page/who-are-we.webp'
 import family2 from '../../assets/pictures/landing-page/our-history.avif'
+import ccofLogo from '../../assets/logos/certifications/ccof-logo.webp'
+import primusgfsLogo from '../../assets/logos/certifications/primusgfs-logo.webp'
+import fairTradeLogo from '../../assets/logos/certifications/fair-trade-logo.webp'
 import contactImage from '../../assets/pictures/landing-page/contact.webp'
 import iconoSuelo from '../../assets/icons/cuidado-del-suelo.png'
 import iconoAgua from '../../assets/icons/agua.png'
 import iconoCompromiso from '../../assets/icons/compromiso.png'
 import CropModal from '../../components/crop-modal/CropModal'
 import CropsCarousel from '../../components/crops-carousel/CropsCarousel'
+import CertificationCard from '../../components/certifications/CertificationCard'
 
 function LandingPage() {
   const { t } = useLanguage()
@@ -482,6 +486,42 @@ function LandingPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sección Certificaciones */}
+        <section
+          id="certificaciones"
+          className="py-16 sm:py-20 bg-white/50 scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] sm:scroll-mt-[calc(5.5rem+env(safe-area-inset-top))]"
+        >
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl sm:text-5xl font-bold text-text mb-6 text-center">
+              {t('certifications.title')}
+            </h2>
+            <p className="text-lg sm:text-xl text-text/80 mb-10 text-center max-w-3xl mx-auto">
+              {t('certifications.subtitle')}
+            </p>
+            <p className="text-base sm:text-lg lg:text-xl text-text/80 leading-relaxed text-center max-w-4xl mx-auto mb-12">
+              {t('certifications.description')}
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+              <CertificationCard
+                logo={ccofLogo}
+                title={t('certifications.items.ccof.title')}
+                description={t('certifications.items.ccof.description')}
+              />
+              <CertificationCard
+                logo={primusgfsLogo}
+                title={t('certifications.items.primusgfs.title')}
+                description={t('certifications.items.primusgfs.description')}
+              />
+              <CertificationCard
+                logo={fairTradeLogo}
+                title={t('certifications.items.fairTrade.title')}
+                description={t('certifications.items.fairTrade.description')}
+              />
             </div>
           </div>
         </section>

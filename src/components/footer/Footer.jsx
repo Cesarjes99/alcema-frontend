@@ -38,6 +38,11 @@ function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#certificaciones" className="hover:text-accent transition">
+                  {t('nav.certifications')}
+                </a>
+              </li>
+              <li>
                 <a href="#cultivos" className="hover:text-accent transition">
                   {t('nav.crops')}
                 </a>

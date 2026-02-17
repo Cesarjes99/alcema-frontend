@@ -6,8 +6,6 @@ function CropsCarousel({ onOpenModal }) {
   const { t } = useLanguage()
   const [selectedCropIndex, setSelectedCropIndex] = useState(0)
   const [hoveredCropIndex, setHoveredCropIndex] = useState(null)
-  const [cropIsPaused, setCropIsPaused] = useState(false)
-  const cropAutoScrollIntervalRef = useRef(null)
   const cropsContainerRef = useRef(null)
   const cropsScrollContainerRef = useRef(null)
   const isProgrammaticScrollRef = useRef(false)
@@ -34,20 +32,6 @@ function CropsCarousel({ onOpenModal }) {
 
     setSelectedCropIndex(closestIndex)
   }, [])
-
-  useEffect(() => {
-    if (!cropIsPaused) {
-      cropAutoScrollIntervalRef.current = setInterval(() => {
-        setSelectedCropIndex(prevIndex => (prevIndex + 1) % crops.length)
-      }, 4000)
-    }
-
-    return () => {
-      if (cropAutoScrollIntervalRef.current) {
-        clearInterval(cropAutoScrollIntervalRef.current)
-      }
-    }
-  }, [cropIsPaused, crops.length])
 
   useEffect(() => {
     const scrollContainer = cropsScrollContainerRef.current
@@ -87,21 +71,15 @@ function CropsCarousel({ onOpenModal }) {
   }, [selectedCropIndex])
 
   const goToCropPrevious = () => {
-    setCropIsPaused(true)
     setSelectedCropIndex(prevIndex => (prevIndex - 1 + crops.length) % crops.length)
-    setTimeout(() => setCropIsPaused(false), 5000)
   }
 
   const goToCropNext = () => {
-    setCropIsPaused(true)
     setSelectedCropIndex(prevIndex => (prevIndex + 1) % crops.length)
-    setTimeout(() => setCropIsPaused(false), 5000)
   }
 
   const selectCrop = index => {
-    setCropIsPaused(true)
     setSelectedCropIndex(index)
-    setTimeout(() => setCropIsPaused(false), 5000)
   }
 
   const getCropName = crop => {
@@ -119,7 +97,7 @@ function CropsCarousel({ onOpenModal }) {
     <div className="relative max-w-7xl mx-auto">
       <div
         ref={cropsScrollContainerRef}
-        className="overflow-x-auto overflow-y-visible pb-15 -mx-4 px-4"
+        className="overflow-x-auto sm:overflow-x-hidden overflow-y-visible pb-15 -mx-4 px-4"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         <style>{`

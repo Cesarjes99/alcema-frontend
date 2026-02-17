@@ -46,6 +46,9 @@ function Header() {
           <a href="#nosotros" className="hover:text-accent transition">
             {t('nav.about')}
           </a>
+          <a href="#certificaciones" className="hover:text-accent transition">
+            {t('nav.certifications')}
+          </a>
           <a href="#cultivos" className="hover:text-accent transition">
             {t('nav.crops')}
           </a>
@@ -113,6 +116,13 @@ function Header() {
               className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
             >
               {t('nav.about')}
+            </a>
+            <a
+              href="#certificaciones"
+              onClick={e => handleNavClick(e, 'certificaciones')}
+              className="px-7 py-3 text-text font-medium hover:text-accent hover:bg-black/5 transition"
+            >
+              {t('nav.certifications')}
             </a>
             <a
               href="#cultivos"
